@@ -3,11 +3,12 @@ package com.axelnovais.financas.services.impl;
 import com.axelnovais.financas.exceptions.RegraDeNogocioException;
 import com.axelnovais.financas.model.entity.Lancamento;
 import com.axelnovais.financas.model.enums.StatusLancamento;
+import com.axelnovais.financas.model.enums.TipoLancamento;
 import com.axelnovais.financas.model.repository.LancamentoRepository;
 import com.axelnovais.financas.services.LancamentoService;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
-import org.springframework.stereotype.Repository;
+
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -91,5 +92,22 @@ public class LancamentoServiceImpl implements LancamentoService {
     @Override
     public Optional<Lancamento> obterPorId(Long id) {
         return repository.findById(id);
+    }
+
+    @Override
+    @Transactional
+    public BigDecimal obterSaldoPorUsuario(Long id) {
+        BigDecimal receitas = repository.obterSaldoPorTipoLancamentoEUsuarioEStatus(id, TipoLancamento.RECEITA, StatusLancamento.EFETIVADO);
+        BigDecimal despesas = repository.obterSaldoPorTipoLancamentoEUsuarioEStatus(id, TipoLancamento.DESPESA, StatusLancamento.EFETIVADO);
+
+        if(receitas == null) {
+            receitas = BigDecimal.ZERO;
+        }
+
+        if(despesas == null) {
+            despesas = BigDecimal.ZERO;
+        }
+
+        return receitas.subtract(despesas);
     }
 }
