@@ -34,7 +34,6 @@ class Login extends React.Component {
                                                           id="exampleInputEmail1" 
                                                           aria-describedby="emailHelp"
                                                           placeholder="Email"/>
-                                                          
                                                    </FormGroup>
 
                                                    <FormGroup label="Senha: *" htmlFor="exampleInputPassword1">
@@ -51,7 +50,6 @@ class Login extends React.Component {
                                         </form>
                                         </div>
                                     </div>
-
                                 </div>
                             </Card>
                         </div>
