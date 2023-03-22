@@ -1,14 +1,17 @@
 import React from 'react';
 
 import Rotas from './rotas';
-import 'bootswatch/dist/flatly/bootstrap.css' 
+import NavBar from '../components/navBar';
+import 'bootswatch/dist/flatly/bootstrap.css'
 import '../custom.css'
 
 function App() {
   return (
-    <div className="App">
-      <Rotas/>
-    </div>
+    <><NavBar />
+      <div className="container">
+        <Rotas />
+      </div>
+    </>
   );
 }
 
