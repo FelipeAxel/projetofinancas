@@ -1,12 +1,15 @@
 package com.axelnovais.financas.dto;
 
-import lombok.Builder;
-import lombok.Data;
+import lombok.*;
 
 import java.math.BigDecimal;
 
 @Data
 @Builder
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class LancamentoDTO {
     private Long id;
     private String descricao;

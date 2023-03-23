@@ -21,10 +21,6 @@ import java.util.List;
 @EnableWebMvc
 public class FinancasApplication implements WebMvcConfigurer {
 
-
-	public void addCorsMapping(CorsRegistry registry){
-		registry.addMapping("/* *").allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS");
-	}
 	public static void main(String[] args) {
 		SpringApplication.run(FinancasApplication.class, args);
 	}
